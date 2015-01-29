@@ -1,0 +1,19 @@
+<h1>Image Posts</h1>
+
+<p>Add A New Image Post</p>
+
+<%= form_for(@post) do |f| %>
+<%= f.text_field :image_url, :placeholder => "Image URL" %>
+<%= f.text_field :title, :placeholder => "Title" %>
+<%= f.text_field :user_name, :placeholder => "User Name" %>
+<%= f.submit %>
+<%end%><br>
+<ul>
+  <% @posts.each do |post| %>
+  <div data-id="<%=post.id%>">
+    <li><%= image_tag(post.image_url, size: '200x200') %><span>X</span></li>
+    <li><%= post.title %></li>
+    <li>By: <%= post.user_name %></li>
+  </div><br>
+  <% end %>
+</ul>
